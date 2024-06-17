@@ -1,0 +1,3 @@
+username: pi
+additional_packages:
+docker_dir: /opt/docker/data
