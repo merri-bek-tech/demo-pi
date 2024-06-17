@@ -5,7 +5,15 @@
      recurse: yes
      owner: pi
      group: pi
-     mode: "770"
+     mode: "777"
+
+- name: Download wordle index.html
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/bosorioo/wordle-unlimited/main/index.html
+    dest: '{{ docker_dir }}/content'
+    owner: pi
+    group: pi
+    mode: "444"
 
 - name: Make sure the {{ container_name }} container is created and is running
   docker_container:
