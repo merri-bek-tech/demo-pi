@@ -14,25 +14,25 @@
     state: present
   when: additional_packages is defined
 
-- name: Disable SSH password auth
-  lineinfile:
-    path: /etc/ssh/sshd_config
-    regexp: "^#PasswordAuthentication yes"
-    line: "PasswordAuthentication no"
-  register: sshd_config
+# - name: Disable SSH password auth
+#   lineinfile:
+#     path: /etc/ssh/sshd_config
+#     regexp: "^#PasswordAuthentication yes"
+#     line: "PasswordAuthentication no"
+#   register: sshd_config
 
-- name: Enable passwordless sudo for "{{ username }}" user
-  lineinfile:
-    path: /etc/sudoers
-    regexp: "^%wheel%"
-    line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
-    validate: "/usr/sbin/visudo -cf %s"
+# - name: Enable passwordless sudo for "{{ username }}" user
+#   lineinfile:
+#     path: /etc/sudoers
+#     regexp: "^%wheel%"
+#     line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
+#     validate: "/usr/sbin/visudo -cf %s"
 
-- name: Restart SSH daemon
-  service:
-    name: ssh
-    state: restarted
-  when: sshd_config.changed
+# - name: Restart SSH daemon
+#   service:
+#     name: ssh
+#     state: restarted
+#   when: sshd_config.changed
 
 - name: Set timezone
   lineinfile:

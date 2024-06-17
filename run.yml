@@ -2,15 +2,6 @@
 - hosts: all
   become: true
   roles:
-    - role: shared
-      tags:
-        - essential
-        - system
-        - docker
-        - containers
-        - proxy
-        - backup
-        - aquadoggo
     - role: system/essential
       tags:
         - essential
@@ -19,23 +10,7 @@
       tags:
         - docker
         - system
-    - role: system/backupninja
-      tags:
-        - backup
-        - system
-    - role: apps/nginx-proxy
-      tags:
-        - containers
-        - proxy
-    - role: apps/dokuwiki
-      tags:
-        - containers
-        - dokuwiki
-    - role: apps/pibasho
-      tags:
-        - containers
-        - pibasho
-    - role: apps/oxbike
-      tags:
-        - containers
-        - oxbike
+    # - role: apps/nginx-proxy
+    #   tags:
+    #     - containers
+    #     - proxy

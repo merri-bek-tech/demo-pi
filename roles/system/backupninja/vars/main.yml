@@ -1,3 +1,0 @@
----
-backups_sh_key_filename: id_rsa_backup
-backup_confs_dir: /etc/backup.d
