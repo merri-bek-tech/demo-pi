@@ -1,0 +1,19 @@
+- name: Create the content directory
+  file:
+     path: '{{ docker_dir }}/content'
+     state: directory
+     recurse: yes
+     owner: pi
+     group: pi
+     mode: "770"
+
+- name: Make sure the {{ container_name }} container is created and is running
+  docker_container:
+    name: "{{ container_name }}"
+    image: nginx
+    state: 'started'
+    volumes:
+      - '{{ docker_dir }}/content:/usr/share/nginx/html'
+    ports:
+      - '80:80'
+    restart_policy: unless-stopped
